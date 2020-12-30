@@ -199,16 +199,16 @@ No input necessary
 * **App EUI:**\
 Stays like this
 
-Now click on **Register** in the lower right corner. Now the device is created.
+Click on **Register** in the lower right corner. Congratulations, the device is created.
 
-### Adoption of the LoRa parameters
-The LoRa parameters still have to be transferred to the program.\
-For this the configuration web page of the Geiger counter must be called. Further above it is explained how to reach the configuration page (*Setting of the WLAN* and *Call from the WLAN*)).
+### Modifying the LoRa parameters
+After the registration was completed, the LoRa parameters can be transferred to the program.\
+They can be set up at the configuration site of the Geiger counter (see above).
 
-Now go through the configuration page until the setting of the LoRa parameters is displayed. Now take the 3 values (**APPEUI, DEVEUI, APPKEY**) from the TTN console (see above) and enter them here. In the TTN console go to the device that was created above. Here you can find the 3 values. The HEX values **without** spaces must be entered as they appear in the TTN console.
+Go through the configuration site until the settings of the LoRa parameters are displayed. Type in the 3 parameters from the TTN console (**APPEUI, DEVEUI, APPKEY**). 
+They can be find in your TTN account for each device (see above). The HEX values must be entered **without** spaces as they appear in the TTN or other devices.
 Example:\
-in the TTN console it says
-
+The TTN console reads
 ```
 Device EUI 00 D0 C0 00 C3 19 7C E8
 ```
@@ -217,45 +217,45 @@ Then the following must be entered:
 ```
 00D0C000C3197CE8
 ```
-This also applies to the **APPEUI** and the **APPKEY** .
+This is also applies to **APPEUI** and **APPKEY** .
 
-### Logging in to sensor.community (formerly luftdaten.info)
-If you want the multigeiger to pass on its data to *sensor.community* via TTN, you have to register it there.
-The registration is quite similar to the one described above. Here only the changes are explained (please read the whole procedure above).
+### Logging data into sensor.community (formerly luftdaten.info)
+If you want the MultiGeiger to pass recorded data to *sensor.community* via TTN, you have to register it.
+The registration is similar to the TTN registration described above. In the following, only the changes are explained:
 
  * Sensor ID:\
- Enter here the back part of the DEVEUI (if - see above - the DEVEUI is called *00 D0 C0 00 C3 19 7C E8*, the back 4 bytes ( so *C3197CE8*) are to be entered in decimal converted ( so here 3273227496 ).
+ Enter the last 4 bytes of the DEVEUI in left to right order (e.g. if the DEVEUI is *00 D0 C0 00 C3 19 7C E8*, so enter *C3197CE8*), but converted to decimal, not in HEX (finally: 3273227496).
  * Sensor Board:\
- Select **TTN** here (using the small arrows on the right).
+ Select **TTN**, using the small arrows on the right.
  
 
 ### HTTP integration
-To get the data from TTN to *sensor.community* you have to set the HTTP integration at TTN.
-In the TTN console click *Applications* and then click the application of the Geiger counter (e.g. *geiger_20200205*). Then on the top right in the bar with *Overview*, *Devices*, *Payload Formats*, *Integrations*, *Data*, *Settings* click the **Integrations**. Then select **HTTP Integration** via **add integration**.
+To get the data from TTN to *sensor.community* you have to enable the HTTP integration at TTN.
+In the TTN console click *Applications* and thenclick on the application of the GeigerCounter (e.g. *geiger_20200205*). On the top right in the bar with *Overview*, *Devices*, *Payload Formats*, *Integrations*, *Data*, *Settings* click **Integrations**. Then select **HTTP Integration** via **add integration**.
 
 Now fill in the displayed fields:\
- **Process ID
+ **Process ID**\
  	Enter any name for this integration here
  **Access Key:**\
- 	Click here once and select the *default key\.
+ 	Click here once and select the *default key*\
  **URL:**\
- 	Now enter the URL to the ttn2luft program here: <https://ttn2luft.citysensor.de>\
+ 	Enter the URL for the ttn2luft program: <https://ttn2luft.citysensor.de>\
  **Method:**\
- 	there is already *POST*, which let\
+ 	If it reads already *POST*, don't touch it\
  **Authorization:**\
  	remains empty\
  **Custom Header Name:**\
  	here comes the text **X-SSID** pure\
  **Custom Header value:**\
- 	and then the SSID of the sensor (the number you got when you registered at sensor.community, *NOT* the chip ID).
+ 	Enter the SSID of the sensor (the number you got when you registered at sensor.community, *NOT* the chip ID).
 
-Then click **Add integration** in the lower right corner. That's it.\
-And this is how it looks like filled in:\
+Click **Add integration** in the lower right corner to confirm the changes.\
+See this example how the form should look like :\
 !["HTTP Integration filled"](images/http_integration_filled.png)
 
 ### TTN payload (example)
-To see readable values in the TTN console instead of just the data bytes, a small script can be inserted as payload decoder.\
-Log in to *The Things Network* website, use **Applications** to find the application you created above and then click on it. Select the tab **Payload Formats** in the menu bar. Then paste the following code into the field (overwriting the existing code):
+In order to get readable values in the TTN console instead of solely data bytes, a small script can be inserted as payload decoder.\
+Go to the TTN website, log in, click **Applications** to find the application you created above. Select the tab **Payload Formats** in the menu bar and paste the following code into the field. Existing code will be overwritten):
 
 ```
 function Decoder(bytes, port) {
