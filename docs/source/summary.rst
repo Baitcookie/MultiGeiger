@@ -1,14 +1,11 @@
-Overview
-========
-
+.. include:: global.rst.inc
+.. highlight:: none
+.. _summary:
 
 What is MultiGeiger?
---------------------
+====================
 
 The MultiGeiger is a radioactivity measurement device.
-
-Main features
-~~~~~~~~~~~~~
 
 **multiple use cases supported**
 

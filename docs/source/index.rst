@@ -7,20 +7,20 @@
 .. highlight:: none
 
 MultiGeiger Documentation
-=========================
+*************************
 
-.. include:: summary.rst
 
 .. toctree::
    :maxdepth: 2
 
+   summary
    ecocurious
-   changes
-   usage
    installation
    setup_lora
+   usage
    faq
    resources
    development
    authors
+   changes
 

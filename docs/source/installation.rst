@@ -1,3 +1,7 @@
+.. include:: global.rst.inc                                                     
+.. highlight:: none
+.. _installation:
+
 Installation
 ------------
 
