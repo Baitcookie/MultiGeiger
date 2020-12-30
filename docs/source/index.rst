@@ -9,13 +9,16 @@
 MultiGeiger Documentation
 =========================
 
-.. include:: ../../README-en.rst
+.. include:: summary.rst
 
 .. toctree::
    :maxdepth: 2
 
+   ecocurious
    changes
    usage
+   installation
+   setup_lora
    faq
    resources
    development
